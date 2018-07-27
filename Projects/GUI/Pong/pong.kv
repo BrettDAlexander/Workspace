@@ -1,5 +1,10 @@
+# Pong v1.0
+# by Brett Alexander
+
+# uses specified kivy version
 #:kivy 1.10.1
 
+# create ball
 <PongBall>:
     size: 50, 50 
     canvas:
@@ -7,6 +12,7 @@
             pos: self.pos
             size: self.size 
 
+# create player paddles
 <PongPaddle>:
     size: 25, 200
 
@@ -15,37 +21,44 @@
             pos: self.pos
             size: self.size
 
+# create canvas
 <PongGame>:
     ball: pong_ball
     player1: player_left
     player2: player_right
     
+    # center line
     canvas:
         Rectangle:
             pos: self.center_x-5, 0
             size: 10, self.height
     
+    # player 1 score
     Label:
         font_size: 70  
         center_x: root.width / 4
         top: root.top - 50
         text: str(root.player1.score)
 
+    # player 2 score
     Label:
         font_size: 70
         center_x: root.width * 3 / 4
         top: root.top - 50
         text: str(root.player2.score)
 
+    # ball id
     PongBall:
         id: pong_ball
         center: self.parent.center
 
+    # player 1 paddle
     PongPaddle:
         id: player_left
         x: root.x
         center_y: root.center_y
     
+    # player 2 paddle
     PongPaddle:
         id: player_right
         x: root.width-self.width

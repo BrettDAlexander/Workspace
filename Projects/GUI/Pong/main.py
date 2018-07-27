@@ -1,6 +1,11 @@
+# Pong v1.0
+# by Brett Alexander
+
+# import specified kivy version
 import kivy
 kivy.require('1.10.1')
 
+# imports
 from kivy.app import App
 from kivy.uix.widget import Widget
 from kivy.properties import NumericProperty, ReferenceListProperty,\
@@ -10,6 +15,7 @@ from kivy.clock import Clock
 from random import randint
 import time
 
+# give ball velocity
 class PongBall(Widget):
     velocity_x = NumericProperty(0)
     velocity_y = NumericProperty(0)
@@ -18,6 +24,7 @@ class PongBall(Widget):
     def move(self):
         self.pos = Vector(*self.velocity) + self.pos
 
+# make ball bounce off things
 class PongPaddle(Widget):
     score = NumericProperty(0)
 
@@ -29,6 +36,7 @@ class PongPaddle(Widget):
             vel = bounced * 1.1
             ball.velocity = vel.x, vel.y + offset
 
+# start game mechanics
 class PongGame(Widget):
     ball = ObjectProperty(None)
     player1 = ObjectProperty(None)
@@ -44,6 +52,7 @@ class PongGame(Widget):
         if touch.x > self.width - self.width / 3:
             self.player2.center_y = touch.y
 
+    # update elements
     def update(self, dt):
         self.ball.move()
 
@@ -63,6 +72,7 @@ class PongGame(Widget):
             self.player1.score += 1
             self.serve_ball(vel=(-4, 0))
 
+# build game
 class PongApp(App):
     def build(self):
         game = PongGame()
@@ -70,5 +80,6 @@ class PongApp(App):
         Clock.schedule_interval(game.update, 1.0/60.0)
         return game
 
+# run game
 if __name__ == '__main__':
     PongApp().run()
