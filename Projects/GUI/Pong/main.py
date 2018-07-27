@@ -7,13 +7,11 @@ kivy.require('1.10.1')
 
 # imports
 from kivy.app import App
-from kivy.uix.widget import Widget
-from kivy.properties import NumericProperty, ReferenceListProperty,\
-    ObjectProperty
-from kivy.vector import Vector
 from kivy.clock import Clock
+from kivy.properties import NumericProperty, ObjectProperty, ReferenceListProperty
+from kivy.uix.widget import Widget
+from kivy.vector import Vector
 from random import randint
-import time
 
 # give ball velocity
 class PongBall(Widget):
