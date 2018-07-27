@@ -16,19 +16,16 @@ biweekly = weekly*2
 monthly = weekly*4
 salary = weekly*52
 
-print("---Income Before Taxes---")
-print("Daily: ${:0,.2f}".format(daily))
-print("Weekly: ${:0,.2f}".format(weekly))
-print("Biweekly: ${:0,.2f}".format(biweekly))
-print("Monthly: ${:0,.2f}".format(monthly))
-print("Salary: ${:0,.2f}".format(salary))
+print("\n---Income Before Taxes---")
+table = {'Daily':daily, 'Weekly':weekly, 'Biweekly':biweekly, 'Monthly':monthly, 'Salary':salary}
+for interval, income in table.items():
+    print('{0:<8} | {1:>13}'.format(interval, '${:,.2f}'.format(income)))
 
 if taxpercent>0:
-    print("---Income After Taxes---")
-    print("Daily: ${:0,.2f}".format(daily*tax))
-    print("Weekly: ${:0,.2f}".format(weekly*tax))
-    print("Biweekly: ${:0,.2f}".format(biweekly*tax))
-    print("Monthly: ${:0,.2f}".format(monthly*tax))
-    print("Salary: ${:0,.2f}".format(salary*tax))
+    table2 = {'Daily':daily*tax, 'Weekly':weekly*tax, 'Biweekly':biweekly*tax, 'Monthly':monthly*tax, 'Salary':salary*tax}
+    print("\n---Income After Taxes---")
+    for interval, income in table2.items():
+        print('{0:<8} | {1:>13}'.format(interval, '${:,.2f}'.format(income)))
+    print("")
 else:
     pass
