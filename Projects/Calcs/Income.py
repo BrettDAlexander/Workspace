@@ -16,7 +16,7 @@ biweekly = weekly*2
 monthly = weekly*4
 salary = weekly*52
 
-print("\n---Income Before Taxes---")
+print("---Income Before Taxes---")
 table = {'Daily':daily, 'Weekly':weekly, 'Biweekly':biweekly, 'Monthly':monthly, 'Salary':salary}
 for interval, income in table.items():
     print('{0:<8} | {1:>13}'.format(interval, '${:,.2f}'.format(income)))
@@ -26,6 +26,5 @@ if taxpercent>0:
     print("\n---Income After Taxes---")
     for interval, income in table2.items():
         print('{0:<8} | {1:>13}'.format(interval, '${:,.2f}'.format(income)))
-    print("")
 else:
     pass
