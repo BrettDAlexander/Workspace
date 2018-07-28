@@ -1,5 +1,6 @@
 hourly = float(input("What is your hourly wage? "))
 taxpercent = float(input("What percentage of taxes are taken from your income? "))
+shift = float(input("How many hours is your shift a day? "))
 hours = float(input("How many hours do you work in a week? "))
 
 tax = abs(taxpercent/100-1)
@@ -10,7 +11,7 @@ if hours>40:
 else:
     overtime = 0.0
 
-daily = hourly*12
+daily = hourly*shift
 weekly = hourly*hours+overtime
 biweekly = weekly*2
 monthly = weekly*4
